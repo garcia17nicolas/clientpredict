@@ -7,7 +7,7 @@ from insterfases import CultivoData
 app = FastAPI()
 
 # Cargar el modelo desde el archivo pickle
-with open("cultivo.pkl", "rb") as file:
+with open("svcPredict.pkl", "rb") as file:
     model = pickle.load(file)
 
 @app.get("/")
@@ -38,12 +38,13 @@ def predict(data: CultivoData):
 
     # Retornar los resultados, incluyendo las variables de entrada y la predicción
     return {
-        "N": N,
-        "P": P,
-        "K": K,
-        "temperature": temperature,
-        "humidity": humidity,
-        "ph": ph,
-        "rainfall": rainfall
+        prediction
+        #"N": N,
+        #"P": P,
+        #"K": K,
+        #"temperature": temperature,
+        #"humidity": humidity,
+        #"ph": ph,
+        #"rainfall": rainfall
     }
 
